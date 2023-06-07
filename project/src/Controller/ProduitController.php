@@ -33,6 +33,7 @@ class ProduitController extends AbstractController
             'https://tech.dev.ats-digital.com/api/products?size=50'
         );
 
+        
         $data = json_decode($res->getContent(), true);
       //   dd($data);
 
