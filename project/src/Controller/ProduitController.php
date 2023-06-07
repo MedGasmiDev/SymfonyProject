@@ -64,13 +64,11 @@ class ProduitController extends AbstractController
 
 
     #[Route('/produit/{id}', name: 'show_produit', methods: ['GET'])]
-    public function showProduit(Produit $produit)
+    public function showProduit(ProduitRepository $produitRepository,$id)
     {
-        $reviews = $produit->getReviews();
-
+        $produit = $produitRepository->findBy(['id' => $id]);
         return $this->render('produit/show.html.twig', [
-            'produit' => $produit,
-            'reviews' => $reviews,
+            'produit' => $produit[0]
         ]);
     }
 }

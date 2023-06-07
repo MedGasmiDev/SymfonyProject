@@ -1,6 +1,58 @@
-<h1>Détails du produit : {{ produit.name }}</h1>
-
-<h2>Avis :</h2>
-{% for review in reviews %}
-    <p>{{ review.id }}</p>
-{% endfor %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{asset('node_modules/bootstrap/dist/css/bootstrap.css')}}"> 
+    <title>Formation</title>
+  </head>
+  <body>
+      <div class="container">
+          <div class="card" style="width: 100%;">
+           <div class="card-header">
+                <div class="row">
+                  <div class="col-md-9"><img src="{{ produit.image }}" class="card-img-top" alt="..."></div>
+                  <div class="col-md-3">
+                      <table class="table">
+                          <tbody>
+                            <tr>
+                              <th scope="row">Produit:</th>
+                              <td width="75%">{{ produit.name }}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Category</th>
+                              <td width="75%">{{ produit.category }}</td>
+                            </tr>
+                            <tr>
+                              <th scope="row">Price</th>
+                              <td width="75%">{{ produit.price }}</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                  </div>
+                </div>
+            </div>
+            <div class="card-body">
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Note</th>
+                    <th scope="col" width="75%">Commantaire</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for review in produit.reviews %}
+                  <tr>
+                    <th scope="row">
+                    {{ review.note }}</th>
+                    <td width="75%">
+                    {{ review.commentaire }}</td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+          </div>
+      </div>
+  </body>
+</html>
