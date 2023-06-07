@@ -1,23 +1,51 @@
-{% for produit in listeProduits %}
-	name :
-	{{ produit.name }}
-	category :
-	{{ produit.category }}
-	price :
-	{{produit.price}}
-	image :
-	{{produit.image}} 
 
-<input type="button" value="Voir détail" onclick="location.href='{{ path('show_produit', {'id': produit.id}) }}'"/><br/>
-{% endfor %}
+<!doctype html>
 <html lang="en">
   <head>
+
+  <style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Bootstrap demo</title>
-    <link href="{{asset('node_modules/bootstrap/dist/css/bootstrap.css')}}" rel="stylesheet" >
+    <link rel="stylesheet" href="{{asset('node_modules/bootstrap/dist/css/bootstrap.css')}}"> 
+    <title>Formation</title>
   </head>
   <body>
-    
- </body>
+
+ <section class="content">  
+	<div class="container container-fluid">
+        <!-- ============================================================== -->
+        <!-- Start Page Content -->
+        <!-- ============================================================== -->
+        </br>
+
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                <h2 class="card-header">Liste des Produits</h2>
+                    <div class="card-body">
+                            <div class="row">
+                               {% for produit in listeProduits %}
+                                <div class="col-3">
+                                    <div class="card" onclick="location.href='{{ path('show_produit', {'id': produit.id}) }}';" style="width: 18rem; cursor: pointer;">
+                                        <h5 class="card-header">{{ produit.name }} </h5>
+                                        <img class="card-img-top" src="{{ produit.image }}" alt="Card image cap">
+                                        <div class="card-body">
+                                            <p class="card-text">Categorie: {{ produit.Category }}</p>
+                                        </div>
+                                        <h3 class="card-footer">Prix: {{ produit.Price }} </h3>
+                                    </div>
+                                </div>
+                                {% endfor %}
+                            </div>
+                        </br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+  </body>
 </html>
